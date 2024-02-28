@@ -24,12 +24,15 @@ int main(void)
 		fflush(stdout);
 		nread = getline(&lineptr, &length, stdin);
 		if (nread == -1)
+		{
+			printf("\n");
 			break;
+		}
 		lineptr[nread - 1] = '\0';
 		pid = fork();
 		if (pid == -1)
 		{
-			perror("Error:fork");
+			perror("fork");
 			exit(EXIT_FAILURE);
 		}
 		else if (pid == 0)
@@ -38,7 +41,7 @@ int main(void)
 
 			if (execve(args[0], args, NULL) == -1)
 			{
-				perror("Error:execve");
+				perror("execve");
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -46,7 +49,7 @@ int main(void)
 		{
 			if (waitpid(pid, &status, 0) == -1)
 			{
-				perror("Error:waitpid");
+				perror("waitpid");
 				exit(EXIT_FAILURE);
 			}
 		}
