@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- *tokenize - tokenize a string
+ *tokenizer - tokenize a string
  *@str: string to tokenize
  *@delim: characters that separate a string
  *
@@ -11,17 +11,17 @@
  */
 size_t tokenizer(char *str, char *delim)
 {
-	size_t words_count = 0;
+	size_t word_counter = 0;
 
 	if (strtok(str, delim) != NULL)
-	       	++words_count;
+		++word_counter;
 	while (strtok(NULL, delim) != NULL)
-		++words_count;
-	return (words_count);
+		++word_counter;
+	return (word_counter);
 }
 
 /**
- *word_list - creates an array of words
+ *word_array - creates an array of words
  *@str:string to prepare an array from
  *@delim: delimiter that determines end of words
  *
@@ -36,10 +36,11 @@ char **word_array(char *str, char *delim)
 	size_t str_iter;
 	char prev_char = '\0';
 
-	if((array_size = tokenizer(str, delim) + 1) > 0)
+	array_size = tokenizer(str, delim) + 1;
+	if (array_size > 0)
 	{
 		array = malloc(sizeof(char *) * (array_size));
-		if(array == NULL)
+		if (array == NULL)
 			return (NULL);
 		for (str_iter = 0; str_iter < str_size; ++str_iter)
 		{

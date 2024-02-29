@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <sys/types.h>
-#include <string.h>
+
 
 size_t tokenizer(char *str, char *delim);
 char **word_array(char *str, char *delim);
