@@ -19,12 +19,12 @@ int main(__attribute__((unused))int argc, char *argv[], char *envp[])
 
 	while (1)
 	{
-		printf("#cisfun$ ");
+		PRINT("#cisfun$ ");
 		fflush(stdout);
 		nread = getline(&lineptr, &length, stdin);
 		if (nread == -1)
 		{
-			printf("\n");
+			PRINT("\n");
 			break;
 		}
 		lineptr[nread - 1] = '\0';

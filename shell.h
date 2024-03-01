@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
+#define PRINT(format) printf(format)
 
 size_t tokenizer(char *str, char *delim);
 char **word_array(char *str, char *delim);
